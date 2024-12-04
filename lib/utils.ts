@@ -1,4 +1,5 @@
 import { ClassValue, clsx } from 'clsx';
+import { url } from 'inspector';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -48,10 +49,9 @@ export function throttle(fn: (...args: any[]) => any, wait: number) {
 
 export const siteConfig = {
   name: 'Ladddr-component',
-  url: 'https://uilayout-starter-repo.vercel.app/',
-  ogImage: 'https://uilayout-starter-repo.vercel.app/og.jpg',
-  description:
-    'An open-source starter repo for those who want to create their own component library.',
+  url: 'https://github.com/Skythrill256',
+  description: 'Ladddr-component',
+  ogImage: 'https://github.com/Skythrill256.png',
   links: {
     twitter: 'https://twitter.com/anjishnu46',
     linkedin: 'https://www.linkedin.com/in/Anjishnu Ganguly',
