@@ -1,0 +1,104 @@
+export const metadata = {
+  title: 'TokenList',
+  description:
+    'A React component for displaying and filtering cryptocurrency tokens with network filtering and search capabilities',
+};
+
+```bash
+npx cubickk init
+npx cubickk add token-list
+```
+
+## Usage
+```tsx token-list.tsx
+import React from 'react';
+
+interface Token {
+  chainId: number;
+  address: string;
+  name: string;
+  symbol: string;
+  decimals: number;
+  logoURI: string;
+}
+
+interface TokenListProps {
+  onSelectToken?: (token: Token) => void;
+  initialChainId?: number | "all";
+  maxHeight?: string;
+  minHeight?: string;
+  showNetworkFilter?: boolean;
+  customTokens?: Token[];
+  chainIdToName?: { [key: number]: string };
+  className?: string;
+}
+
+export const TokenList: React.FC<TokenListProps> = ({
+  onSelectToken,
+  initialChainId = "all",
+  maxHeight = "400px",
+  minHeight = "150px",
+  showNetworkFilter = true,
+  customTokens,
+  chainIdToName = defaultChainIdToName,
+  className = ""
+}) => {
+  // Component implementation details
+};
+```
+
+## Props
+| Prop               | Type                        | Default           | Description                                                |
+| ------------------ | --------------------------- | ----------------- | ---------------------------------------------------------- |
+| `onSelectToken`    | `(token: Token) => void`    | `undefined`       | Callback function triggered when a token is selected        |
+| `initialChainId`   | `number \| "all"`          | `"all"`          | Initial chain ID for filtering tokens                       |
+| `maxHeight`        | `string`                   | `"400px"`        | Maximum height of the token list container                  |
+| `minHeight`        | `string`                   | `"150px"`        | Minimum height of the token list container                  |
+| `showNetworkFilter`| `boolean`                  | `true`           | Whether to show the network filter dropdown                 |
+| `customTokens`     | `Token[]`                  | `undefined`      | Custom list of tokens to display                           |
+| `chainIdToName`    | `{ [key: number]: string }`| `defaultChainIdToName` | Mapping of chain IDs to network names              |
+| `className`        | `string`                   | `""`             | Additional CSS classes for styling                          |
+
+## Features
+- Token search functionality by name, symbol, or address
+- Network filtering with customizable chain options
+- Support for custom token lists
+- Scrollable container for long token lists
+- Flexible height customization
+- Network filter toggle
+
+## Example
+```tsx
+"use client"
+import { TokenList } from "@/components/token-list";
+import React from 'react'
+
+export default function TokenListDemo() {
+  const handleTokenSelect = (token) => {
+    console.log("Selected token:", token);
+  };
+
+  const customTokens = [
+    {
+      chainId: 1,
+      address: "0x1234567890abcdef1234567890abcdef12345678",
+      name: "Custom Token",
+      symbol: "CTK",
+      decimals: 18,
+      logoURI: "https://example.com/token-logo.png"
+    }
+  ];
+
+  return (
+    <div className="p-4">
+      <TokenList
+        onSelectToken={handleTokenSelect}
+        maxHeight="500px"
+        customTokens={customTokens}
+        showNetworkFilter={true}
+        className="bg-white shadow-lg rounded-lg"
+      />
+    </div>
+  );
+}
+```

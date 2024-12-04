@@ -1,0 +1,77 @@
+export const metadata = {
+  title: 'Ethereum QR Code Generator',
+  description:
+    'A React component for generating QR codes from Ethereum addresses with validation and customization options',
+};
+
+```bash
+npx cubickk init
+npx cubickk add qr-code
+```
+
+## Usage
+```tsx ethereum-qr.tsx
+import React from 'react';
+import { z } from 'zod';
+
+interface EthereumQRCodeProps {
+  onAddressChange?: (address: string) => void;
+  qrCodeSize?: number;
+  qrCodeLevel?: 'L' | 'M' | 'Q' | 'H';
+  qrCodeIncludeMargin?: boolean;
+  className?: string;
+}
+
+export const EthereumQRCode: React.FC<EthereumQRCodeProps> = ({
+  onAddressChange,
+  qrCodeSize = 200,
+  qrCodeLevel = 'L',
+  qrCodeIncludeMargin = true,
+  className
+}) => {
+  // Component implementation details
+};
+```
+
+## Props
+| Prop                 | Type                          | Default | Description                                                  |
+| ------------------- | ----------------------------- | ------- | ------------------------------------------------------------ |
+| `onAddressChange`   | `(address: string) => void`   |         | Optional callback receiving the submitted Ethereum address     |
+| `qrCodeSize`        | `number`                      | `200`   | Size of the generated QR code in pixels                       |
+| `qrCodeLevel`       | `'L' \| 'M' \| 'Q' \| 'H'`   | `'L'`   | Error correction level for the QR code                        |
+| `qrCodeIncludeMargin` | `boolean`                   | `true`  | Whether to include margin around the QR code                  |
+| `className`         | `string`                      |         | Optional CSS class for additional styling                     |
+
+## Validation Schema
+The component uses Zod schema for input validation:
+```tsx
+const ethereumAddressSchema = z.string().regex(/^0x[a-fA-F0-9]{40}$/, "Invalid Ethereum address format");
+```
+
+## Features
+- Form input for Ethereum address
+- Real-time address validation
+- QR code generation with customizable settings
+- Error handling with visual feedback
+- Flexible styling options with Tailwind CSS
+
+## Example
+```tsx
+"use client"
+import { EthereumQRCode } from "@/components/qr-code";
+import React from 'react'
+
+export default function QRCodeDemo() {
+  return (
+    <div className="flex flex-col justify-center items-center">
+      <EthereumQRCode
+        className="bg-gray-100 shadow-lg"
+        qrCodeSize={250}
+        qrCodeLevel="H"
+        qrCodeIncludeMargin={false}
+        onAddressChange={(address) => console.log("New address:", address)}
+      />
+    </div>
+  );
+}
+```

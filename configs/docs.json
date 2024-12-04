@@ -1,0 +1,56 @@
+{
+  "dataArray": [
+    {
+      "name": "currency",
+      "componentArray": [
+        {
+          "componentName": "currency",
+          "filesrc": "components/currency/currency.tsx",
+          "iframeSrc": "live-components/currency",
+          "parentlink": "currency",
+          "parentName": "Currency"
+        }
+      ],
+      "type": "currency"
+    },
+    {
+      "name": "QR-code",
+      "componentArray": [
+        {
+          "componentName": "QR-code",
+          "filesrc": "components/qr-code/qr-code.tsx",
+          "iframeSrc": "live-components/QR-code",
+          "parentlink": "QR-code",
+          "parentName": "QR-Code"
+        }
+      ],
+      "type": "QR-code"
+    },
+    {
+      "name": "Token-list",
+      "componentArray": [
+        {
+          "componentName": "Token-list",
+          "filesrc": "components/token-list/token-list.tsx",
+          "iframeSrc": "live-components/token-list",
+          "parentlink": "token-list",
+          "parentName": "Token-List"
+        }
+      ],
+      "type": "token-list"
+    },
+    {
+      "name": "Transaction-processing",
+      "componentArray": [
+        {
+          "componentName": "Transaction-processing",
+          "filesrc": "components/transaction-processing/transaction-processing.tsx",
+          "iframeSrc": "live-components/transaction-processing",
+          "parentlink": "transaction-processing",
+          "parentName": "Transaction Processing"
+        }
+      ],
+      "type": "transaction-processing"
+    }
+  ]
+}

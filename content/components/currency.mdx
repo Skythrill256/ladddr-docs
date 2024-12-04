@@ -1,0 +1,67 @@
+export const metadata = {
+  title: 'Currency Converter',
+  description:
+    'A React component for converting Ethereum balances across ETH, Gwei, and Wei units with real-time validation',
+};
+
+```bash
+  npx cubickk init
+  npx cubickk add currency
+````
+## Usage
+
+```tsx currency-converter.tsx
+import React, { useState } from 'react';
+import { z } from 'zod';
+
+interface EthereumBalanceInputProps {
+  onBalanceChange?: (conversions: Record<'ETH' | 'Gwei' | 'Wei', string>) => void;
+  className?: string;
+}
+
+export const EthereumBalanceInput: React.FC<EthereumBalanceInputProps> = ({
+  onBalanceChange,
+  className
+}) => {
+  // Component implementation details
+};
+```
+
+## Props
+
+| Prop               | Type              | Default | Description                                                  |
+| ------------------ | ----------------- | ------- | ------------------------------------------------------------ |
+| `onBalanceChange`  | `(conversions: Record<'ETH' \| 'Gwei' \| 'Wei', string>) => void` | | Optional callback function receiving converted balance values |
+| `className`        | `string`          |         | Optional CSS class for additional styling                    |
+
+## Validation Schemas
+
+The component uses Zod schemas for input validation:
+
+```tsx
+const ethSchema = z.string().regex(/^\d+(\.\d+)?$/, "Invalid ETH format");
+const gweiSchema = z.string().regex(/^\d+(\.\d+)?$/, "Invalid Gwei format");
+const weiSchema = z.string().regex(/^\d+$/, "Invalid Wei format");
+```
+
+## Error Handling
+
+- Validates input for each Ethereum unit (ETH, Gwei, Wei)
+- Displays error messages for incorrect input formats
+- Prevents invalid conversions
+
+## Example
+
+```tsx
+export default function EthereumConverterDemo() {
+  const handleBalanceChange = (conversions) => {
+    console.log("Converted balances:", conversions);
+  };
+
+  return (
+    <div>
+      <EthereumBalanceInput onBalanceChange={handleBalanceChange} />
+    </div>
+  );
+}
+```

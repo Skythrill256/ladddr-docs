@@ -1,0 +1,124 @@
+export const metadata = {
+  title: 'TransactionConfirmation',
+  description:
+    'A React modal component for displaying blockchain transaction progress with source and destination chain confirmation status',
+};
+
+```bash
+npx cubickk init
+npx cubickk add transaction-confirmation
+```
+
+## Usage
+```tsx transaction-confirmation.tsx
+import React from 'react';
+import { motion } from 'framer-motion';
+
+interface TransactionConfirmationProps {
+  isOpen: boolean;
+  onClose: () => void;
+  transactionHash: string;
+  sourceConfirmed: boolean;
+  destinationConfirming: boolean;
+  sourceText?: string;
+  destinationText?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+  modalClassName?: string;
+}
+
+export const TransactionConfirmation: React.FC<TransactionConfirmationProps> = ({
+  isOpen = false,
+  onClose,
+  transactionHash = "",
+  sourceConfirmed = false,
+  destinationConfirming = true,
+  sourceText = "Confirmed in source",
+  destinationText = "Confirming for destination",
+  primaryColor = "green",
+  secondaryColor = "blue",
+  modalClassName = ""
+}) => {
+  // Component implementation details
+};
+```
+
+## Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `isOpen` | `boolean` | `false` | Controls modal visibility |
+| `onClose` | `() => void` | | Callback for modal closure |
+| `transactionHash` | `string` | `""` | Transaction hash to display |
+| `sourceConfirmed` | `boolean` | `false` | Source chain confirmation status |
+| `destinationConfirming` | `boolean` | `true` | Destination chain confirmation status |
+| `sourceText` | `string` | `"Confirmed in source"` | Source confirmation text |
+| `destinationText` | `string` | `"Confirming for destination"` | Destination confirmation text |
+| `primaryColor` | `string` | `"green"` | Source chain indicator color |
+| `secondaryColor` | `string` | `"blue"` | Destination chain indicator color |
+| `modalClassName` | `string` | `""` | Additional modal styling classes |
+
+## Subcomponents
+
+### TransactionConfirmationContent
+```tsx
+interface TransactionConfirmationContentProps {
+  isClosing: boolean;
+  onClose: () => void;
+  transactionHash: string;
+  sourceConfirmed: boolean;
+  destinationConfirming: boolean;
+  sourceText: string;
+  destinationText: string;
+  primaryColor: string;
+  secondaryColor: string;
+  modalClassName: string;
+}
+```
+
+### TransactionStatus
+```tsx
+interface TransactionStatusProps {
+  confirmed: boolean;
+  text: string;
+  color: string;
+  icon?: React.ReactNode;
+  animate: boolean;
+}
+```
+
+## Example
+```tsx
+"use client"
+import { TransactionConfirmation } from "@/components/transaction-confirmation";
+import React, { useState } from 'react';
+
+export default function TransactionDemo() {
+  const [isOpen, setIsOpen] = useState(true);
+  
+  return (
+    <div>
+      <TransactionConfirmation
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        transactionHash="0xabc1234567890def"
+        sourceConfirmed={true}
+        destinationConfirming={true}
+        primaryColor="purple"
+        secondaryColor="orange"
+        sourceText="Transaction Confirmed on Source Chain"
+        destinationText="Awaiting Confirmation on Destination Chain"
+        modalClassName="custom-modal rounded-lg"
+      />
+    </div>
+  );
+}
+```
+
+## Features
+- Animated modal transitions with Framer Motion
+- Real-time transaction status updates
+- Customizable confirmation indicators
+- Transaction hash display
+- Responsive design with Tailwind CSS
+- Chain-specific status messages
+- Flexible color theming
