@@ -7,7 +7,7 @@ import createMDX from '@next/mdx';
 import { remarkCodeHike, recmaCodeHike } from 'codehike/mdx';
 import rehypeSlug from 'rehype-slug';
 // Import the JSON file
-import docsData from './configs/docs.json';
+const docsConfig = require('./configs/docs.json');
 // import dataArray from './configs/docs';
 
 const { dataArray } = docsData;
